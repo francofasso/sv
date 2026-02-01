@@ -1,1 +1,408 @@
-<h1>Ciao</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine? 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffd4e5 50%, #fff5e6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Cute floating decorations */
+        .floating-cat {
+            position: absolute;
+            font-size: 4em;
+            animation: float-around 15s ease-in-out infinite;
+        }
+
+        .cat1 { top: 5%; right: 20%; animation-delay: 0s; }
+        .cat2 { bottom: 10%; left: 10%; animation-delay: 5s; }
+        .cat3 { top: 50%; right: 5%; animation-delay: 10s; }
+
+        .stars {
+            position: absolute;
+            font-size: 2em;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .star1 { top: 20%; left: 25%; animation-delay: 0s; }
+        .star2 { top: 15%; right: 30%; animation-delay: 0.5s; }
+        .star3 { bottom: 20%; left: 20%; animation-delay: 1s; }
+        .star4 { bottom: 25%; right: 25%; animation-delay: 1.5s; }
+
+        .photo-frame {
+            background: white;
+            padding: 25px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .photo-border {
+            border: 15px solid #fff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #fff9fc 0%, #fff 100%);
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(255, 182, 193, 0.2);
+        }
+
+        /* Photo frames around the border */
+        .photo-placeholder {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 5px solid white;
+            border-radius: 8px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: #999;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            z-index: 20;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Positioning photos randomly around and overlapping the border */
+        .photo1 { top: -60px; left: 8%; transform: rotate(-8deg); }
+        .photo2 { top: -55px; right: 25%; transform: rotate(12deg); }
+        .photo3 { top: 25%; right: -60px; transform: rotate(-5deg); }
+        .photo4 { bottom: 30%; right: -60px; transform: rotate(7deg); }
+        .photo5 { bottom: -60px; right: 12%; transform: rotate(-10deg); }
+        .photo6 { bottom: -55px; left: 30%; transform: rotate(6deg); }
+        .photo7 { bottom: 25%; left: -60px; transform: rotate(-7deg); }
+        .photo8 { top: 30%; left: -60px; transform: rotate(9deg); }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+        }
+
+        .heart {
+            font-size: 5em;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(255, 105, 180, 0.3));
+        }
+
+        p {
+            font-size: 1.4em;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .name {
+            color: #ff1493;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .buttons-container {
+            position: relative;
+            height: 150px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 18px 45px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            position: relative;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.4);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #ddd 0%, #bbb 100%);
+            color: #666;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        #noBtn.escaped {
+            position: fixed;
+            transition: none;
+        }
+
+        .celebration {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .celebration.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .celebration h2 {
+            color: #ff1493;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .celebration p {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
+        }
+
+        @keyframes float-around {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -20px) rotate(10deg); }
+            50% { transform: translate(-20px, -30px) rotate(-10deg); }
+            75% { transform: translate(20px, 20px) rotate(5deg); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+            50% { 
+                opacity: 0.4;
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: #f5576c;
+            animation: confetti-fall 3s linear;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-placeholder {
+                width: 60px;
+                height: 60px;
+            }
+            .photo1, .photo4 { transform: translateX(-50%) scale(0.8); }
+            .photo2, .photo3 { right: -30px; }
+            .photo5, .photo6 { left: -30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="photo-frame">
+        <div class="photo-border">
+            <!-- Photo placeholders around the border -->
+            <div class="photo-placeholder photo1">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+1" alt="Foto 1">
+            </div>
+            <div class="photo-placeholder photo2">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+2" alt="Foto 2">
+            </div>
+            <div class="photo-placeholder photo3">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+3" alt="Foto 3">
+            </div>
+            <div class="photo-placeholder photo4">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+4" alt="Foto 4">
+            </div>
+            <div class="photo-placeholder photo5">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+5" alt="Foto 5">
+            </div>
+            <div class="photo-placeholder photo6">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+6" alt="Foto 6">
+            </div>
+            <div class="photo-placeholder photo7">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+7" alt="Foto 7">
+            </div>
+            <div class="photo-placeholder photo8">
+                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+8" alt="Foto 8">
+            </div>
+
+            <h1>💌 Una Domanda Speciale 💌</h1>
+            <div class="heart">💕</div>
+            <p>
+                Cara <span class="name">Martina</span>,<br>
+                Vuoi essere la mia Valentine?
+            </p>
+            
+            <div class="buttons-container">
+                <div class="buttons">
+                    <button id="yesBtn">SÌ! 💖</button>
+                    <button id="noBtn">No</button>
+                </div>
+            </div>
+
+            <div class="celebration" id="celebration">
+                <h2>🎉 Evviva! 🎉</h2>
+                <p>Mi hai reso la persona più felice del mondo! ❤️</p>
+                <div class="heart">💝</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const celebration = document.getElementById('celebration');
+        
+        let hasEscaped = false;
+        const escapeDistance = 80; // Distance in pixels when button starts escaping
+
+        // Track mouse movement
+        document.addEventListener('mousemove', (e) => {
+            if (celebration.classList.contains('active')) return;
+            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const btnRect = noBtn.getBoundingClientRect();
+            const btnCenterX = btnRect.left + btnRect.width / 2;
+            const btnCenterY = btnRect.top + btnRect.height / 2;
+            
+            // Calculate distance between mouse and button center
+            const distance = Math.sqrt(
+                Math.pow(mouseX - btnCenterX, 2) + 
+                Math.pow(mouseY - btnCenterY, 2)
+            );
+            
+            // If mouse is too close, move the button
+            if (distance < escapeDistance) {
+                moveButton();
+            }
+        });
+
+        function moveButton() {
+            if (!hasEscaped) {
+                noBtn.classList.add('escaped');
+                hasEscaped = true;
+            }
+            
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            // Generate completely random position anywhere on screen
+            const margin = 50;
+            const randomX = margin + Math.random() * (windowWidth - btnWidth - margin * 2);
+            const randomY = margin + Math.random() * (windowHeight - btnHeight - margin * 2);
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Handle YES button click
+        yesBtn.addEventListener('click', () => {
+            // Hide buttons
+            document.querySelector('.buttons-container').style.display = 'none';
+            
+            // Show celebration
+            celebration.classList.add('active');
+            
+            // Create confetti
+            createConfetti();
+        });
+
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ff1493', '#ffc0cb', '#ff85c1', '#ffd700', '#ff6b9d'];
+            
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                    if (Math.random() > 0.5) {
+                        confetti.textContent = '❤️';
+                        confetti.style.fontSize = '20px';
+                        confetti.style.background = 'transparent';
+                    }
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 20);
+            }
+        }
+    </script>
+</body>
+</html>
