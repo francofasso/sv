@@ -48,15 +48,16 @@
         .star4 { bottom: 25%; right: 25%; animation-delay: 1.5s; }
 
         .photo-frame {
-            background: white;
             padding: 25px;
             border-radius: 30px;
-            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.3);
             text-align: center;
-            max-width: 600px;
+            max-width: 900px;
             width: 90%;
             position: relative;
             z-index: 10;
+            scale: 0.85;
+            background: white;
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.3);
         }
 
         .photo-border {
@@ -73,15 +74,17 @@
             position: absolute;
             width: 120px;
             height: 120px;
+            /*
             border: 5px solid white;
             border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
             background: #f5f5f5;
+            */
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.9em;
             color: #999;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
             overflow: hidden;
             z-index: 20;
         }
@@ -93,14 +96,43 @@
         }
 
         /* Positioning photos randomly around and overlapping the border */
-        .photo1 { top: -60px; left: 8%; transform: rotate(-8deg); }
-        .photo2 { top: -55px; right: 25%; transform: rotate(12deg); }
-        .photo3 { top: 25%; right: -60px; transform: rotate(-5deg); }
-        .photo4 { bottom: 30%; right: -60px; transform: rotate(7deg); }
-        .photo5 { bottom: -60px; right: 12%; transform: rotate(-10deg); }
-        .photo6 { bottom: -55px; left: 30%; transform: rotate(6deg); }
-        .photo7 { bottom: 25%; left: -60px; transform: rotate(-7deg); }
-        .photo8 { top: 30%; left: -60px; transform: rotate(9deg); }
+        .photo1 {
+            top: -50px;
+            scale: 1.8;
+            left: -100px;
+            transform: rotate3d(-0.1, 1, 0, 180deg);
+        }
+        .photo2 {
+            top: -90px;
+            right: 3%;
+            transform: rotate(32deg);
+            scale: 1.4;
+        }
+        .photo3 {
+            transform: rotateY(180deg);
+            width: auto;
+            right: -130px;
+            top: 210px;
+            scale: 1.1;
+        }
+        .photo5 {
+            bottom: -50px;
+            right: 12%;
+            transform: rotate(-10deg);
+            scale: 1.6;
+        }
+        .photo6 {
+            bottom: -80px;
+            left: 20%;
+            transform: rotate(6deg);
+            width: auto;
+        }
+        .photo7 {
+            bottom: 80px;
+            left: -110px;
+            transform: rotate3d(0.2, 1, 0, 180deg);
+            scale: 1.9;
+        }
 
         h1 {
             color: #ff69b4;
@@ -113,7 +145,7 @@
 
         .heart {
             font-size: 5em;
-            margin: 20px 0;
+            margin: 30px 0 0;
             animation: float 3s ease-in-out infinite;
             filter: drop-shadow(0 4px 8px rgba(255, 105, 180, 0.3));
         }
@@ -161,7 +193,9 @@
         #yesBtn {
             background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
             color: white;
-            position: relative;
+            position: absolute;
+            left: 25%;
+            top: 0px;
         }
 
         #yesBtn:hover {
@@ -174,6 +208,8 @@
             color: #666;
             position: relative;
             transition: all 0.3s ease;
+            left: 15%;
+            z-index: 1000;
         }
 
         #noBtn.escaped {
@@ -255,16 +291,31 @@
                 opacity: 0;
             }
         }
-
+        
         @media (max-width: 600px) {
             .photo-placeholder {
-                width: 60px;
-                height: 60px;
+                scale: 1;
             }
-            .photo1, .photo4 { transform: translateX(-50%) scale(0.8); }
-            .photo2, .photo3 { right: -30px; }
-            .photo5, .photo6 { left: -30px; }
+            .photo3 {
+                scale: 0.8;
+                right: -150px;
+                top: 250px;
+                rotate: 29deg;
+            }
+            .photo6 {
+                left: -10px;
+                scale: 0.8;
+            }
+            #yesBtn {
+                position: relative;
+                left: 0;
+            }
+            #noBtn {
+                left: 0;
+            }
         }
+
+
     </style>
 </head>
 <body>
@@ -272,32 +323,26 @@
         <div class="photo-border">
             <!-- Photo placeholders around the border -->
             <div class="photo-placeholder photo1">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+1" alt="Foto 1">
+                <img src="https://models.spriters-resource.com/media/preview_icons/281/284503.png?updated=1755496565" alt="Foto 1">
             </div>
             <div class="photo-placeholder photo2">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+2" alt="Foto 2">
+                <img src="https://www.creativefabrica.com/wp-content/uploads/2021/01/12/valentine-love-heart-envelope-letter-svg-Graphics-7739174-1.png" alt="Foto 2">
             </div>
             <div class="photo-placeholder photo3">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+3" alt="Foto 3">
-            </div>
-            <div class="photo-placeholder photo4">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+4" alt="Foto 4">
+                <img src="https://mario.wiki.gallery/images/0/0c/SM64DS_Asset_Model_Hoot.png" alt="Foto 3">
             </div>
             <div class="photo-placeholder photo5">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+5" alt="Foto 5">
+                <img src="https://static.wikia.nocookie.net/fantendo/images/c/cd/SM64DSSilverStar.png/revision/latest?cb=20241215114845" alt="Foto 5">
             </div>
             <div class="photo-placeholder photo6">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+6" alt="Foto 6">
+                <img src="https://mario.wiki.gallery/images/thumb/0/0b/MKT_Heart_Artwork.png/1200px-MKT_Heart_Artwork.png" alt="Foto 6">
             </div>
             <div class="photo-placeholder photo7">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+7" alt="Foto 7">
-            </div>
-            <div class="photo-placeholder photo8">
-                <img src="https://placehold.co/120x120/ffb6c1/white?text=Foto+8" alt="Foto 8">
+                <img src="https://models.spriters-resource.com/media/preview_icons/307/310129.png?updated=1755502733" alt="Foto 7">
             </div>
 
-            <h1>💌 Una Domanda Speciale 💌</h1>
-            <div class="heart">💕</div>
+
+            <h1> Una Domanda Speciale <span style="font-family: sans-serif;"> &lt;3 </span> </h1>
             <p>
                 Cara <span class="name">Martina</span>,<br>
                 Vuoi essere la mia Valentine?
